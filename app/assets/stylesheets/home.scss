@@ -1,0 +1,20 @@
+.button a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin: 1em auto;
+  padding: 1em 2em;
+  width: 250px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: #00A0DC;
+  justify-content: center;
+  text-align: center;
+}
+
+.button a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #008EC2;
+}

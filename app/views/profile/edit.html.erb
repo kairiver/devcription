@@ -1,0 +1,54 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Devcriptions For かいり</title>
+</head>
+<header>
+  <h1>
+    <a class="white" href="/">Devcriptions</a>
+  </h1>
+</header>
+<body>
+<div class="div-wrapper">
+  <h2>プロフィール登録/更新</h2>
+  <div class="div-wrapper-second">
+  </div>
+  <%= form_with url: @profile_edit_path do |f| %>
+    <h3>自己紹介</h3>
+    <div class="mt-05">
+      <p>肩書き</p>
+      <input id="text" type="text" name="title" value="<%= @title %>">
+    </div>
+    <div class="mt-05">
+      <p>コメント</p>
+      <textarea name="comment" rows="4" cols="40"><%= @comment %></textarea>
+    </div>
+    <h3>外部リンク</h3>
+    <h3>普段使用している開発言語</h3>
+    <div>
+      <div class="cp_ipselect cp_sl01">
+        <%= f.select :language1, @languages, { include_blank: '選択してください', selected: @language1 } %>
+      </div>
+      <div class="cp_ipselect cp_sl01">
+        <%= f.select :language2, @languages, { include_blank: '選択してください', selected: @language2 } %>
+      </div>
+      <div class="cp_ipselect cp_sl01">
+        <%= f.select :language3, @languages, { include_blank: '選択してください', selected: @language3 } %>
+      </div>
+      <div class="cp_ipselect cp_sl01">
+        <%= f.select :language4, @languages, { include_blank: '選択してください', selected: @language4 } %>
+      </div>
+      <div class="cp_ipselect cp_sl01">
+        <%= f.select :language5, @languages, { include_blank: '選択してください', selected: @language5 } %>
+      </div>
+    </div>
+    <div class="button-panel">
+      <input class="button" type="submit" value="プロフィールを更新する"></input>
+    </div>
+  <% end %>
+  <div align="center" class="button mt-1">
+    <a href="<%= @profile_path %>">キャンセル</a>
+  </div>
+</div>
+</body>
+</html>

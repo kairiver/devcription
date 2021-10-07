@@ -1,0 +1,40 @@
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Devcriptions For <%= @user.nickname %></title>
+</head>
+<header>
+  <h1>
+    <a class="white" href="/">Devcriptions</a>
+  </h1>
+</header>
+<body>
+<div class="div-wrapper">
+  <div align="center">
+    <img src="<%= @user.image %>" border="1px"/>
+  </div>
+  <div align="center"><%= @title %></div>
+  <h2><%= @user.nickname %></h2>
+  <div align="center"><a href="<%= @twitter_url %>">@<%= @param %></a></div>
+  <div class="div-wrapper-second">
+    <% unless @languages.nil? || @languages.empty? %>
+      <h3>普段使用している開発言語</h3>
+      <ul>
+        <% @languages.each do |language| %>
+          <% unless language.nil? %>
+            <li><%= language %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+    <h3>コメント</h3>
+    <div class="button mt-1">
+      <span><%= simple_format(h @comment) %></span>
+    </div>
+  </div>
+  <div align="center" class="button mt-3">
+    <a href="<%= @edit_path %>">プロフィールを修正する</a>
+  </div>
+</div>
+</body>
+</html>
