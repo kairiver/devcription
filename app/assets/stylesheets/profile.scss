@@ -125,6 +125,11 @@ a.white:link, a.white:visited, a.white:hover, a.white:active {
   background-color: #008EC2;
 }
 
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
 /* textarea */
 textarea {
   resize: none;
