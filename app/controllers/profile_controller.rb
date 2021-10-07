@@ -3,7 +3,7 @@
 class ProfileController < ApplicationController
   def profile
     @param = params[:id]
-    @user = User.find_by(name: @param)
+    @user = User.find_by(nickname: @param)
 
     # ユーザーがない場合は404エラー
     raise ActionController.RoutingError if @user.nil?
@@ -31,10 +31,12 @@ class ProfileController < ApplicationController
         languages[description.language5]
       ].compact
     end
+
+    @can_edit = session[:uid] && session[:uid] == @user.uid
   end
 
   def edit
-    user = User.find_by(name: params[:id])
+    user = User.find_by(nickname: params[:id])
     description = Description.find_by(user_id: user.id)
     @languages = Language.all.map { |o| [o.name, o.id] }
     if description.nil?
@@ -59,7 +61,7 @@ class ProfileController < ApplicationController
   end
 
   def edit_post
-    user = User.find_by(name: params[:id])
+    user = User.find_by(nickname: params[:id])
     # descriptionを登録する
     description = Description.find_by(user_id: user.id)
     if description.nil?

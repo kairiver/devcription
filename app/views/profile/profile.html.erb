@@ -14,7 +14,7 @@
     <img src="<%= @user.image %>" border="1px"/>
   </div>
   <div align="center"><%= @title %></div>
-  <h2><%= @user.nickname %></h2>
+  <h2><%= @user.name %></h2>
   <div align="center"><a href="<%= @twitter_url %>">@<%= @param %></a></div>
   <div class="div-wrapper-second">
     <% unless @languages.nil? || @languages.empty? %>
@@ -33,7 +33,9 @@
     </div>
   </div>
   <div align="center" class="button mt-3">
-    <a href="<%= @edit_path %>">プロフィールを修正する</a>
+    <% if @can_edit %>
+      <a href="<%= @edit_path %>">プロフィールを修正する</a>
+    <% end %>
   </div>
 </div>
 </body>
