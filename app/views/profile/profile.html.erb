@@ -17,19 +17,19 @@
   <h2><%= @user.name %></h2>
   <div align="center"><a href="<%= @twitter_url %>">@<%= @param %></a></div>
   <div align="center" class="mt-1">
-    <% unless @github.empty? %>
+    <% unless @github.nil? || @github.empty? %>
       <a href="https://github.com/<%= @github %>"><%= image_tag 'GitHub-Mark-32px.png', width: "20px " %></a>
     <% end %>
-    <% unless @facebook.empty? %>
+    <% unless @facebook.nil? || @facebook.empty? %>
       <a href="https://www.facebook.com/<%= @facebook %>"><%= image_tag 'facebook.png', width: "20px" %></a>
     <% end %>
-    <% unless @qiita.empty? %>
+    <% unless @qiita.nil? || @qiita.empty? %>
       <a href="https://qiita.com/<%= @qiita %>"><%= image_tag 'Qiita.png', width: "20px" %></a>
     <% end %>
-    <% unless @note.empty? %>
+    <% unless @note.nil? || @note.empty? %>
       <a href="https://note.com/<%= @note %>"><%= image_tag 'note.png', width: "20px" %></a>
     <% end %>
-    <% unless @site.empty? %>
+    <% unless @site.nil? || @site.empty? %>
       <a href="<%= @site %>"><%= image_tag 'site.png', width: "20px" %></a>
     <% end %>
   </div>
