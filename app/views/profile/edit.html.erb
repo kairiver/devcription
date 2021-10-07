@@ -17,13 +17,25 @@
     <h3>自己紹介</h3>
     <div class="mt-05">
       <p>肩書き</p>
-      <input id="text" type="text" name="title" value="<%= @title %>">
+      <input id="text" type="text" name="title" value="<%= @title %>" class="text_title">
     </div>
     <div class="mt-05">
       <p>コメント</p>
       <textarea name="comment" rows="4" cols="40"><%= @comment %></textarea>
     </div>
     <h3>外部リンク</h3>
+    <div class="mt-05">
+      <p class="bold">Github</p>
+      https://github.com/<input id="text" type="text" placeholder="github id" name="github" value="<%= @github %>" class="text_sns">
+      <p class="bold">Facebook</p>
+      https://www.facebook.com/<input id="text" type="text" placeholder="Facebook id" name="facebook" value="<%= @facebook %>" class="text_sns">
+      <p class="bold">Qiita</p>
+      https://qiita.com/<input id="text" type="text" placeholder="Qiita id" name="qiita" value="<%= @qiita %>" class="text_sns">
+      <p class="bold">note</p>
+      https://note.com/<input id="text" type="text" placeholder="note id" name="note" value="<%= @note %>" class="text_sns">
+      <p class="bold">サイト</p>
+      <input id="text" type="text" name="site" placeholder="任意のサイトのURL" value="<%= @site %>" class="text_site">
+    </div>
     <h3>普段使用している開発言語</h3>
     <div>
       <div class="cp_ipselect cp_sl01">
@@ -43,7 +55,7 @@
       </div>
     </div>
     <div class="button-panel">
-      <input class="button" type="submit" value="プロフィールを更新する"></input>
+      <input class="button" type="submit" value="プロフィールを更新する"/>
     </div>
   <% end %>
   <div align="center" class="button mt-1">

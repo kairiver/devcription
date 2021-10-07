@@ -20,6 +20,11 @@ class ProfileController < ApplicationController
       @title = ''
       @comment = ''
       @languages = nil
+      @github = ''
+      @facebook = ''
+      @qiita = ''
+      @note = ''
+      @site = ''
     else
       @title = description.title
       @comment = description.comment
@@ -30,6 +35,11 @@ class ProfileController < ApplicationController
         languages[description.language4],
         languages[description.language5]
       ].compact
+      @github = description.github
+      @facebook = description.facebook
+      @qiita = description.qiita
+      @note = description.note
+      @site = description.site
     end
 
     @can_edit = session[:uid] && session[:uid] == @user.uid
@@ -55,6 +65,11 @@ class ProfileController < ApplicationController
       @language3 = description.language3
       @language4 = description.language4
       @language5 = description.language5
+      @github = description.github
+      @facebook = description.facebook
+      @qiita = description.qiita
+      @note = description.note
+      @site = description.site
     end
     @profile_path = "/#{params[:id]}"
     @profile_edit_path = "/#{params[:id]}/edit"
@@ -73,7 +88,12 @@ class ProfileController < ApplicationController
         language2: params[:language2],
         language3: params[:language3],
         language4: params[:language4],
-        language5: params[:language5]
+        language5: params[:language5],
+        github: params[:github],
+        facebook: params[:facebook],
+        qiita: params[:qiita],
+        note: params[:note],
+        site: params[:site]
       )
     else
       description.title = params[:title]
@@ -83,6 +103,11 @@ class ProfileController < ApplicationController
       description.language3 = params[:language3]
       description.language4 = params[:language4]
       description.language5 = params[:language5]
+      description.github = params[:github]
+      description.facebook = params[:facebook]
+      description.qiita = params[:qiita]
+      description.note = params[:note]
+      description.site = params[:site]
       description.save
     end
 

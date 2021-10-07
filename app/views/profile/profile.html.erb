@@ -11,11 +11,28 @@
 <body>
 <div class="div-wrapper">
   <div align="center">
-    <img src="<%= @user.image %>" border="1px"/>
+    <img src="<%= @user.image %>" border="1px" class="icon"/>
   </div>
   <div align="center"><%= @title %></div>
   <h2><%= @user.name %></h2>
   <div align="center"><a href="<%= @twitter_url %>">@<%= @param %></a></div>
+  <div align="center" class="mt-1">
+    <% unless @github.empty? %>
+      <a href="https://github.com/<%= @github %>"><%= image_tag 'GitHub-Mark-32px.png', width: "20px " %></a>
+    <% end %>
+    <% unless @facebook.empty? %>
+      <a href="https://www.facebook.com/<%= @facebook %>"><%= image_tag 'facebook.png', width: "20px" %></a>
+    <% end %>
+    <% unless @qiita.empty? %>
+      <a href="https://qiita.com/<%= @qiita %>"><%= image_tag 'Qiita.png', width: "20px" %></a>
+    <% end %>
+    <% unless @note.empty? %>
+      <a href="https://note.com/<%= @note %>"><%= image_tag 'note.png', width: "20px" %></a>
+    <% end %>
+    <% unless @site.empty? %>
+      <a href="<%= @site %>"><%= image_tag 'site.png', width: "20px" %></a>
+    <% end %>
+  </div>
   <div class="div-wrapper-second">
     <% unless @languages.nil? || @languages.empty? %>
       <h3>普段使用している開発言語</h3>

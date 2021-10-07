@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get '/:id/edit', to: 'profile#edit'
   post '/:id/edit', to: 'profile#edit_post'
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/account/logout', to: 'sessions#destroy'
 end

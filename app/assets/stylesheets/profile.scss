@@ -78,7 +78,7 @@ a.white:link, a.white:visited, a.white:hover, a.white:active {
   text-decoration:none;
 }
 
-img {
+.icon {
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
   width:  120px;       /* ※縦横を同値に */
   height: 120px;       /* ※縦横を同値に */
@@ -137,12 +137,32 @@ textarea {
 }
 
 #text{
-  width:260px;
   height:25px;
   color: #666666;
   border-radius: 2px;
   border: 1px solid #bbb;
   padding: 0.3em;
+}
+
+.text_title {
+  width:260px;
+}
+
+.text_sns {
+  width:120px;
+}
+
+.text_site {
+  width:100%;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.image {
+  width:32px;
+  height: 32px;
 }
 
 .cp_ipselect {
