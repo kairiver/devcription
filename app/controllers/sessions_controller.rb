@@ -8,6 +8,10 @@ class SessionsController < ApplicationController
     user = User.find_by(uid: user_data[:uid])
     if user
       session[:uid] = user.uid
+      user.nickname = user_data[:info][:nickname]
+      user.name = user_data[:info][:name]
+      user.image = (user_data[:info][:image]).gsub!('_normal.jpg', '.jpg')
+      user.save
       flash[:success] = 'ログインしました'
     else
       new_user = User.new(
