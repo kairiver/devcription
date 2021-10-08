@@ -1,7 +1,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Devcriptions For かいり</title>
+  <title>Devcriptions</title>
 </head>
 <header>
   <h1>
@@ -59,8 +59,21 @@
     </div>
   <% end %>
   <div align="center" class="button mt-1">
-    <a href="<%= @profile_path %>">キャンセル</a>
+    <% if @description.nil? %>
+      <a href="<%= @cancel_path %>">登録せずに戻る</a>
+    <% else %>
+      <a href="<%= @profile_path %>">キャンセル</a>
+      <a href="<%= @delete_path %>" onclick="return clickEvent()">削除する</a>
+    <% end %>
   </div>
 </div>
+<script>
+    function clickEvent() {
+        let result = confirm("プロフィールを削除しますか？\nこの操作は元に戻せません。\n再度新規登録することは可能です。");
+        if(!result) {
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

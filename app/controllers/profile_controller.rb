@@ -43,13 +43,14 @@ class ProfileController < ApplicationController
     end
 
     @can_edit = session[:uid] && session[:uid] == @user.uid
+    @is_login = session[:uid]
   end
 
   def edit
     user = User.find_by(nickname: params[:id])
-    description = Description.find_by(user_id: user.id)
+    @description = Description.find_by(user_id: user.id)
     @languages = Language.all.map { |o| [o.name, o.id] }
-    if description.nil?
+    if @description.nil?
       @title = ''
       @comment = ''
       @language1 = ''
@@ -58,21 +59,23 @@ class ProfileController < ApplicationController
       @language4 = ''
       @language5 = ''
     else
-      @title = description.title
-      @comment = description.comment
-      @language1 = description.language1
-      @language2 = description.language2
-      @language3 = description.language3
-      @language4 = description.language4
-      @language5 = description.language5
-      @github = description.github
-      @facebook = description.facebook
-      @qiita = description.qiita
-      @note = description.note
-      @site = description.site
+      @title = @description.title
+      @comment = @description.comment
+      @language1 = @description.language1
+      @language2 = @description.language2
+      @language3 = @description.language3
+      @language4 = @description.language4
+      @language5 = @description.language5
+      @github = @description.github
+      @facebook = @description.facebook
+      @qiita = @description.qiita
+      @note = @description.note
+      @site = @description.site
     end
     @profile_path = "/#{params[:id]}"
     @profile_edit_path = "/#{params[:id]}/edit"
+    @cancel_path = "/#{params[:id]}/edit/cancel"
+    @delete_path = "/#{params[:id]}/edit/delete"
   end
 
   def edit_post
@@ -112,5 +115,26 @@ class ProfileController < ApplicationController
     end
 
     redirect_to "/#{params[:id]}"
+  end
+
+  def cancel
+    # 登録したユーザーを削除する
+    user = User.find_by(nickname: params[:id])
+    user.destroy
+    user.save
+    redirect_to '/'
+  end
+
+  def delete
+    # 登録したユーザーを削除する
+    user = User.find_by(nickname: params[:id])
+    description = Description.find_by(user_id: user.id)
+    unless description.nil?
+      description.destroy
+      description.save
+    end
+    user.destroy
+    user.save
+    redirect_to '/'
   end
 end
